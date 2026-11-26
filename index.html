@@ -109,6 +109,10 @@
     display: none !important;
   }
 }
+.date-weekday {
+  display: inline-block;
+  white-space: nowrap;
+}
 </style></head><body>
 <header><div class="header-inner"><div class="brand"><img class="brand-logo" src="brand-logo.png" alt="彰化中國生命禮儀 LOGO"><div class="brand-text"><img src="brand-chinese.png" alt="彰化中國生命禮儀"><img src="brand-english.png" alt="公司英文名稱"></div></div></div></header>
 <main><section class="page-title"><h1>百日・對年計算器</h1><p class="subtitle">請輸入往生日期及相關禮俗條件</p></section>
@@ -180,7 +184,7 @@ function colorDate(el,t){el.classList.remove('saturday','sunday');const w=new Da
 function updateDate(){clearResult();const t=selected();try{$('date-summary').textContent='農曆 '+lunarText(t)+'（星期'+weeks[new Date(t).getUTCDay()]+'）';colorDate($('date-summary'),t);}catch(e){$('date-summary').textContent='農曆資料範圍：112年1月22日起，請選擇支援日期。';}}
 function updateDays(preferred){const d=preferred??(+$('day').value||1);const max=new Date(Date.UTC(+$('year').value+1911,+$('month').value,0)).getUTCDate();$('day').replaceChildren();for(let i=1;i<=max;i++)option($('day'),i,i+' 日');$('day').value=Math.min(d,max);updateDate();}
 function reset(){const now=today();$('year').value=Math.max(112,Math.min(118,now.y-1911));$('month').value=now.m;$('sons').value=0;document.querySelector('input[name="grandson"][value="0"]').checked=true;updateDays(now.d);}
-function calculate(){clearResult();const field=$('sons');if(!/^\d+$/.test(field.value)||!field.checkValidity()){ $('status').textContent='請輸入0至30的整數。';field.focus();return;}try{const death=selected(),sons=+$('sons').value,g=+document.querySelector('input[name="grandson"]:checked').value,n=100-sons-g,h=death+(n-1)*DAY,a=anniversary(death);const note=`兒子${sons}位、大孫${g?'有':'無'}，第${n}天百日`;const ynote='依往生農曆日期加一年計算';const values=[['hundred',h],['year',a.t]];for(const [id,t] of values){$(id+'-solar').textContent=solarText(t);colorDate($(id+'-solar'),t);$(id+'-lunar').textContent=lunarText(t);}
+function calculate(){clearResult();const field=$('sons');if(!/^\d+$/.test(field.value)||!field.checkValidity()){ $('status').textContent='請輸入0至30的整數。';field.focus();return;}try{const death=selected(),sons=+$('sons').value,g=+document.querySelector('input[name="grandson"]:checked').value,n=100-sons-g,h=death+(n-1)*DAY,a=anniversary(death);const note=`兒子${sons}位、大孫${g?'有':'無'}，第${n}天百日`;const ynote='依往生農曆日期加一年計算';const values=[['hundred',h],['year',a.t]];for(const [id,t] of values){$(id+'-solar').innerHTML=solarText(t).replace(/（星期.）/g,'<span class="date-weekday">$&</span>');colorDate($(id+'-solar'),t);$(id+'-lunar').textContent=lunarText(t);}
  $('hundred-note').textContent=note;$('year-note').textContent=ynote;for(const msg of a.warnings){const div=document.createElement('div');div.textContent=msg;$('year-warning').append(div);}$('year-warning').hidden=!a.warnings.length;
  $('print-summary').textContent='往生日期：'+solarText(death)+'｜農曆 '+lunarText(death);
  result=['彰化中國生命禮儀｜百日對年日期','【往生日期】','國曆：'+solarText(death),'農曆：'+lunarText(death),'','【百日日期】','國曆：'+solarText(h),'農曆：'+lunarText(h),note,'','【對年日期】','國曆：'+solarText(a.t),'農曆：'+lunarText(a.t),...a.warnings,'','祭祀日期請依實際禮俗及家屬安排確認。'].join('\n');$('copy').disabled=$('print').disabled=false;$('status').textContent='計算完成，請確認日期。';}catch(e){clearResult();$('status').textContent='計算失敗：'+e.message+'。請人工確認日期。';}}
