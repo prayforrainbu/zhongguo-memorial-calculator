@@ -33,7 +33,7 @@ function anniversary(t){
  // 閏月往生時，起始閏月不再重複計入；其後新進入的閏月才計入。
  for(let x=t+DAY;x<=nominal;x+=DAY){const l=lunar(x);if(l.leap&&l.d===1)leapYears.add(l.y);}
  const warnings=[];
- if(leapYears.size){const prev=lunar(start-DAY);start-=prev.d*DAY;warnings.push([...leapYears].map(y=>'民國'+(y-1911)+'年').join('、')+'遇閏月，計算結果已提前一個月祭拜。');}
+ if(leapYears.size){const prev=lunar(start-DAY);start-=prev.d*DAY;warnings.push([...leapYears].map(y=>'民國'+(y-1911)+'年').join('、')+'遇閏月，提前一個月祭拜。');}
  const n=length(start);if(birth.d>n)warnings.push('因隔年無農曆三十日，所以提前一天。');
  if(birth.leap)warnings.push('往生日期為農曆閏月，依隔年正常月份為基準計算。');
  return {t:start+(Math.min(birth.d,n)-1)*DAY,warnings};
