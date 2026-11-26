@@ -40,13 +40,81 @@
 </script>
 <style>
 :root{--brown:#522305;--gold:#DBB966;--cream:#F8F5EF;--muted:#967B5B;--line:#DED4C3}*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--brown);font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;line-height:1.6}header{background:white;border-bottom:2px solid var(--gold)}.header-inner{max-width:1200px;margin:auto;padding:16px 24px}.brand{display:flex;align-items:center;gap:12px;width:fit-content}.brand-logo{width:62px;height:auto}.brand-text{display:flex;flex-direction:column;gap:6px}.brand-text img{width:205px;height:auto}main{max-width:900px;margin:40px auto;padding:0 20px}.page-title{text-align:center;margin-bottom:30px}h1{font-size:30px;letter-spacing:3px;margin:0 0 8px}.subtitle,footer,.status{color:var(--muted);font-size:14px}.panel{background:white;border:1px solid var(--line);border-radius:12px;padding:28px;margin-bottom:24px;box-shadow:0 4px 16px #5223050a}.field-label{display:block;font-weight:bold;margin-bottom:12px}.date-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:12px}select{width:100%;height:48px;padding:0 12px;border:1px solid var(--line);border-radius:6px;background:white;color:var(--brown);font:inherit}select:focus-visible,button:focus-visible,.grand-options input:focus-visible+span{outline:2px solid var(--gold);outline-offset:3px}.date-summary{text-align:right;font-size:14px;margin-top:10px;color:var(--muted)}.saturday{color:#35639A}.sunday{color:#B64A42}.divider{border:0;border-top:1px solid var(--line);margin:22px 0}.custom-grid,.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.grand-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.grand-options label{position:relative;cursor:pointer}.grand-options input{position:absolute;opacity:0;width:1px;height:1px}.grand-options span{display:flex;align-items:center;justify-content:center;gap:8px;height:48px;border:1px solid var(--line);border-radius:6px}.grand-options span:before{content:"";width:14px;height:14px;border:1px solid var(--muted);border-radius:50%;background:white}.grand-options input:checked+span{background:#F3E8D1;border-color:#B48C43;font-weight:bold}.grand-options input:checked+span:before{background:var(--brown);box-shadow:inset 0 0 0 3px white}button{font:inherit;cursor:pointer;border-radius:6px}.calculate-btn{width:100%;height:52px;margin-top:28px;background:var(--brown);border:0;color:white;font-weight:bold;letter-spacing:4px}.result-grid{gap:20px}.result-card{border:1px solid var(--gold);border-radius:10px;background:white;overflow:hidden}.result-heading{background:#EFE4CE;padding:14px;margin:0;text-align:center;font-size:20px;letter-spacing:2px}.result-content{padding:22px}.result-label{font-size:14px;color:var(--muted);margin-bottom:6px}.result-date{background:#F8F6F2;border-radius:6px;padding:14px 12px;font-size:19px;font-weight:bold;margin-bottom:18px}.result-note{font-size:14px;color:#80551E;border-top:1px solid var(--line);padding-top:12px}.warning{background:#FBF2DD;border-radius:6px;padding:10px 12px;margin-top:10px;font-size:14px;color:#80551E}.warning[hidden]{display:none}.action-row{display:flex;justify-content:center;gap:12px;margin-top:24px}.secondary-btn{background:white;color:var(--brown);border:1px solid #BBA17B;padding:10px 24px}.secondary-btn:disabled{opacity:.5;cursor:not-allowed}.status{text-align:center;margin:14px 0 0}footer{text-align:center;padding:20px;font-size:12px}.print-summary{display:none}@media(max-width:600px){.header-inner{padding:12px 16px}.brand-logo{width:48px}.brand-text img{width:165px}main{margin:26px auto;padding:0 14px}h1{font-size:24px;letter-spacing:1px}.panel{padding:18px}.date-grid{gap:6px}select{padding:0 6px;font-size:16px}.custom-grid,.result-grid{grid-template-columns:1fr;gap:16px}.action-row button{flex:1;padding:10px}.result-content{padding:18px}}@media print{body{background:white}.panel,.action-row{display:none}.print-summary{display:block;margin-bottom:20px}.result-card{break-inside:avoid}main{margin:20px auto}.result-grid{grid-template-columns:1fr 1fr}*{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
-.sons-field{display:flex;align-items:center;gap:10px}.sons-field input{min-width:0;width:100%;height:48px;padding:0 12px;border:1px solid var(--line);border-radius:6px;background:white;color:var(--brown);font:inherit;font-size:16px}.sons-field input:focus-visible{outline:2px solid var(--gold);outline-offset:3px}</style></head><body>
+.sons-field{display:flex;align-items:center;gap:10px}.sons-field input{min-width:0;width:100%;height:48px;padding:0 12px;border:1px solid var(--line);border-radius:6px;background:white;color:var(--brown);font:inherit;font-size:16px}.sons-field input:focus-visible{outline:2px solid var(--gold);outline-offset:3px}.line-contact {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.line-contact-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  color: #522305;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.line-contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: #06C755;
+  border-radius: 50%;
+  box-shadow: 0 3px 10px rgba(0,0,0,.12);
+  transition: transform .2s ease;
+}
+
+.line-contact-link:hover .line-contact-icon {
+  transform: translateY(-2px);
+}
+
+.line-contact-link:focus-visible {
+  outline: 2px solid #DBB966;
+  outline-offset: 4px;
+}
+
+@media print {
+  .line-contact {
+    display: none !important;
+  }
+}
+</style></head><body>
 <header><div class="header-inner"><div class="brand"><img class="brand-logo" src="brand-logo.png" alt="彰化中國生命禮儀 LOGO"><div class="brand-text"><img src="brand-chinese.png" alt="彰化中國生命禮儀"><img src="brand-english.png" alt="公司英文名稱"></div></div></div></header>
 <main><section class="page-title"><h1>百日・對年計算器</h1><p class="subtitle">請輸入往生日期及相關禮俗條件</p></section>
 <section class="panel"><label class="field-label" for="year">往生日期（國曆）</label><div class="date-grid"><select id="year" aria-label="民國年"></select><select id="month" aria-label="月份"></select><select id="day" aria-label="日期"></select></div><div class="date-summary" id="date-summary"></div><hr class="divider"><div class="custom-grid"><div><label class="field-label" for="sons">兒子人數</label><div class="sons-field"><input id="sons" type="number" inputmode="numeric" min="0" max="30" step="1" value="0" required aria-label="兒子人數"><span>位</span></div></div><div><div class="field-label">是否有大孫</div><div class="grand-options" role="group" aria-label="是否有大孫"><label><input type="radio" name="grandson" value="1"><span>有</span></label><label><input type="radio" name="grandson" value="0" checked><span>無</span></label></div></div></div><button class="calculate-btn" id="calculate">開始計算</button><p class="status" id="status" role="status" aria-live="polite"></p></section>
 <div class="print-summary" id="print-summary"></div>
 <section class="result-grid" aria-live="polite"><article class="result-card"><h2 class="result-heading">百日日期</h2><div class="result-content"><div class="result-label">國曆日期</div><div class="result-date" id="hundred-solar">尚未計算</div><div class="result-label">農曆日期</div><div class="result-date" id="hundred-lunar">尚未計算</div><div class="result-note" id="hundred-note">—</div></div></article><article class="result-card"><h2 class="result-heading">對年日期</h2><div class="result-content"><div class="result-label">國曆日期</div><div class="result-date" id="year-solar">尚未計算</div><div class="result-label">農曆日期</div><div class="result-date" id="year-lunar">尚未計算</div><div class="result-note" id="year-note">—</div><div class="warning" id="year-warning" hidden></div></div></article></section>
-<div class="action-row"><button class="secondary-btn" id="copy" disabled>複製結果</button><button class="secondary-btn" id="reset">重新輸入</button><button class="secondary-btn" id="print" disabled>列印結果</button></div></main><footer>祭祀日期請依實際禮俗及家屬安排確認。<br>農曆資料：中央氣象署天文日曆；往生日期支援112年1月22日至118年12月31日。</footer>
+<div class="action-row"><button class="secondary-btn" id="copy" disabled>複製結果</button><button class="secondary-btn" id="reset">重新輸入</button><button class="secondary-btn" id="print" disabled>列印結果</button></div><div class="line-contact">
+  <a class="line-contact-link"
+     href="https://lin.ee/zAUtkz0"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="透過 LINE 聯繫彰化中國生命禮儀">
+    <span class="line-contact-icon">
+      <svg viewBox="0 0 48 48"
+           width="38"
+           height="38"
+           aria-hidden="true">
+        <path
+          d="M24 5C12 5 3 12 3 22c0 9 8 16 18 17l-1 6c0 1 1 1 2 0 5-3 23-12 23-23C45 12 36 5 24 5Z"
+          fill="#ffffff"/>
+        <text x="24" y="26"
+              font-size="12"
+              font-weight="900"
+              text-anchor="middle"
+              fill="#06C755">LINE</text>
+      </svg>
+    </span>
+    <span>專人諮詢</span>
+  </a>
+</div>
+</main><footer>祭祀日期請依實際禮俗及家屬安排確認。<br>農曆資料：中央氣象署天文日曆；往生日期支援112年1月22日至118年12月31日。</footer>
 <script>
 'use strict';
 const $=id=>document.getElementById(id), DAY=86400000;
